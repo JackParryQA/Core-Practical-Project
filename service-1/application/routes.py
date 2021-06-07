@@ -3,7 +3,7 @@ from flask import render_template
 from application.models import MLBDraft
 import requests
 
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 def index():
     picks = MLBDraft()
     all_picks = picks.query.all()
