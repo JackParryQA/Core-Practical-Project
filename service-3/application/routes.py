@@ -2,7 +2,7 @@ from application import app
 import random
 
 picks=list()
-for i in raneg(1,31):
+for i in range(1,31):
     picks.append(i)
 
 @app.route('/pick')
