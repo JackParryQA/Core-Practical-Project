@@ -10,7 +10,6 @@ def index():
     
     position = requests.get('http://service-2:5000/position').text
     pick = requests.get('http://service-3:5000/pick').text
-    # team = requests.get('http://service-4:5003/Get Team').text
 
     response = requests.post('http://service-4:5000/draft pick',json={'position': position, 'pick': int(pick)})
     response_json=response.json()
