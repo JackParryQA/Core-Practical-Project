@@ -3,11 +3,11 @@ pipeline {
     stages {
         stage('Test'){
             steps{
-                sh 'bash tests/test.sh'
+                sh 'bash tests/tests.sh'
             }
         }
         // stage('Build'){
-            
+
         // }
         // stage('Push'){
 
