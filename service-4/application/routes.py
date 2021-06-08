@@ -45,4 +45,4 @@ def draftpick():
         team = random.choice(NLTeams)
     else:
         team = random.choice(ALTeams)
-    return jsonify({'response':f'With the pick { data_sent["pick"] } in the 2021 MLB Draft the { team } have selected a { data_sent["position"] }', 'team':team})
+    return jsonify({'response':f'With pick { data_sent["pick"] } in the 2021 MLB Draft the { team } have selected a { data_sent["position"] }', 'team':team})
