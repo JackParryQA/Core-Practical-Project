@@ -12,11 +12,11 @@ def index():
     pick = requests.get('http://service-3:5000/pick').text
     # team = requests.get('http://service-4:5003/Get Team').text
 
-    team = requests.post('http://service-4:5000/Draft Pick',json={'position': position, 'pick': int(pick)}).text
-
+    response = requests.post('http://service-4:5000/draft pick',json={'position': position, 'pick': int(pick)})
+    response_json=response.json()
     all_picks = MLBDraft.query.order_by(desc(MLBDraft.id)).limit(5).all()
-    new_pick = MLBDraft(team=team,position=position,pick=pick)
+    new_pick = MLBDraft(team=response_json['team'],position=position,pick=pick)
     db.session.add(new_pick)
     db.session.commit()
 
-    return render_template('index.html',  team=team, pick=pick, position=position, picks=all_picks)
+    return render_template('index.html', response=response_json['response'], picks=all_picks)

@@ -37,11 +37,12 @@ NLTeams=['Atlanta Braves',
     'San Francisco Giants']
 
 
-@app.route('/Draft Pick', methods=['GET','POST'])
+@app.route('/draft pick', methods=['GET','POST'])
 def draftpick():
     data_sent=request.get_json('utf-8')
     pick = data_sent['pick']
     if pick%2==0:
-        return random.choice(NLTeams)
+        team = random.choice(NLTeams)
     else:
-        return random.choice(ALTeams)
+        team = random.choice(ALTeams)
+    return jsonify({'response':f'With the pick { data_sent["pick"] } in the 2021 MLB Draft the { team } have selected a { data_sent["position"] }', 'team':team})
