@@ -1,9 +1,8 @@
-FROM python
+FROM python:latest
 
 RUN apt-get update
 RUN apt install python-pip -y
 
-ENV DATABASE_URI = 'mysql+pymysql://root:root@35.204.240.245:MLBDraft'
 
 COPY . .
 

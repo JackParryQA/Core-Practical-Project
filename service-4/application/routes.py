@@ -1,5 +1,5 @@
 from application import app
-from flask import request
+from flask import request,jsonify
 import random
 
 
@@ -37,12 +37,11 @@ NLTeams=['Atlanta Braves',
     'San Francisco Giants']
 
 
-@app.route('/Draft Pick')
+@app.route('/Draft Pick', methods=['GET','POST'])
 def draftpick():
-    data_sent=request.data.decode()
-    if int(data_sent["pick"])%2==0:
-        team=random.choice(NLTeams)
+    data_sent=request.get_json('utf-8')
+    pick = data_sent['pick']
+    if pick%2==0:
+        return random.choice(NLTeams)
     else:
-        team=random.choice(ALTeams)
-    # return f'With the {data-sent["pick"]} the {team} select a {data-sent["position"]}'
-    return team
+        return random.choice(ALTeams)
