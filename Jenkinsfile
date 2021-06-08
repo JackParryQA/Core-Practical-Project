@@ -2,10 +2,12 @@ pipeline {
     agent any
     stages {
         stage('Test'){
-            sh 'bash tests/test.sh'
+            steps{
+                sh 'bash tests/test.sh'
+            }
         }
         // stage('Build'){
-
+            
         // }
         // stage('Push'){
 
