@@ -12,10 +12,12 @@ services:
     ports:
     - target: 5000
       published: 5000
-    # depends_on:
-    #   - service-2
-    #   - service-3
-    #   - service-4
+    depends_on:
+      - service-2
+      - service-3
+      - service-4
+    environment:
+      DATABASE_URI: ${DATABASE_URI}
   service-2:
     build: ./service-2
     image: jackparryqa/service-2:latest
