@@ -23,9 +23,9 @@ class TestBase(TestCase):
 class TestHome(TestBase):
     def test_index(self):
         with requests_mock.Mocker() as m:
-            m.get('http://service-2:5000/position', text='SS')
-            m.get('http://service-3:5000/pick', json=4)
-            m.post('http://service-4:5000/draft pick', json={'response':'With pick 4 in the 2021 MLB Draft the Los Angeles Dodgers have selected a SS','team':'Los Angeles Dodgers'})
+            m.get('http://service-2:5001/position', text='SS')
+            m.get('http://service-3:5002/pick', json=4)
+            m.post('http://service-4:5003/draft pick', json={'response':'With pick 4 in the 2021 MLB Draft the Los Angeles Dodgers have selected a SS','team':'Los Angeles Dodgers'})
             
             response = self.client.get(url_for('index'))
             self.assertEqual(response.status_code, 200)
