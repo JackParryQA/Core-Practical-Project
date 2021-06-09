@@ -1,17 +1,30 @@
 pipeline {
     agent any
+    environment {
+        DOCKER_USERNAME = credentials('DOCKER_USERNAME')
+        DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
+    }
     stages {
-        stage('Test'){
+        stage('Install Requirements'){
             steps{
-                sh 'bash tests/tests.sh'
+                sh 'bash jenkins/install-requirements.sh'
             }
         }
-        // stage('Build'){
-
-        // }
-        // stage('Push'){
-
-        // }
+        stage('Test'){
+            steps{
+                sh 'bash jenkins/tests.sh'
+            }
+        }
+        stage('Build'){
+            steps{
+                sh 'docker-compose buid'
+            }
+        }
+        stage('Push'){
+            steps{
+                sh 'docker-compose push'
+            }
+        }
         // stage('Configuration Management(Ansible)'){
 
         // }
