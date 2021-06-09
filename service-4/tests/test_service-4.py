@@ -9,20 +9,53 @@ class TestBase(TestCase):
     def create_app(self):
         return app
 
-# test_cases=[('RF',23),('C', 29),('SP',1),('SS',3)]
-picks=list()
-for i in range(1,31):
-    picks.append(i)
+ALTeams=['Baltimore Orioles',
+    'Boston Red Sox',
+    'New York Yankees',
+    'Tampa Bay Rays',
+    'Toronto Blue Jays',
+    'Chicago White Sox',
+    'Cleveland Indians',
+    'Detroit Tigers',
+    'Kansas City Royals',
+    'Minnesota Twins',
+    'Houston Astros a.k.a Cheaters',
+    'Los Angeles Angles',
+    'Oakland Athletics',
+    'Seattle Mariners',
+    'Texas Rangers']
+
+NLTeams=['Atlanta Braves',
+    'Miami Marlins',
+    'New York Mets',
+    'Philadelphia Phillies',
+    'Washinton Nationals',
+    'Chicago Cubs',
+    'Cincinnati Reds',
+    'Milwaukee Brewers',
+    'Pittsburgh Pirates',
+    'St. Louis Cardinals',
+    'Arizona Diamondbacks',
+    'Colorado Rockies',
+    'Los Angeles Dodgers',
+    'San Diego Padres',
+    'San Francisco Giants']
+
 
 class TestServ2(TestBase):
-    def test_service2(self):
-        # for case in test_cases:
-            # with patch('random.choice') as r:
-            #     r.return_value = 'Boston Red Sox'
-            #     response = self.client.get(url_for('draftpick'))
-            #     self.assertEqual(response.status_code, 200)
-            #     self.assertEqual('Boston Red Sox', response.data)
+    def test_service2_NL(self):
             
-        response = self.client.get(url_for('draftpick'), json=(random.randint(1,30)))
-        # self.assertEqual(response.status_code, 200)
-        # self.assertIn(response.data.decode('utf-8'), (ALTeams,NLTeams) )
+        response = self.client.get(url_for('draftpick'), json={'position':'SS','pick':2})
+        self.assertEqual(response.status_code, 200)
+        for team in NLTeams:
+            r = response.data.decode()
+            if r[1] == team:
+                self.assertIn(r, {'response':f'With pick 2 in the 2021 MLB Draft the { team } have selected a SS','team':team} )
+    
+    def test_service2_AL(self):
+        response = self.client.get(url_for('draftpick'), json={'position':'RF','pick':19})
+        self.assertEqual(response.status_code, 200)
+        for team in ALTeams:
+            r = response.data.decode()
+            if r[1] == team:
+                self.assertIn(r, {'response':f'With pick 2 in the 2021 MLB Draft the { team } have selected a SS','team':team} )
