@@ -1,6 +1,5 @@
 ---
 # tasks file for nginx
-tasks:
 - name: Install NGINX
   apt:
     name: nginx
