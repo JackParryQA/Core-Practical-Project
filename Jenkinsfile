@@ -25,9 +25,11 @@ pipeline {
                 sh 'docker-compose push'
             }
         }
-        // stage('Configuration Management(Ansible)'){
-
-        // }
+        stage('Configuration Management(Ansible)'){
+            steps{
+                sh 'cd ansible && ansible-playbook -i inventory.yaml playbook.yaml '
+            }
+        }
         // stage('Deploy'){
             
         // }
