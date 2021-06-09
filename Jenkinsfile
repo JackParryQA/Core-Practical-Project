@@ -35,8 +35,10 @@ pipeline {
                 sh 'cd ansible && ansible-playbook -i inventory.yaml playbook.yaml'
             }
         }
-        // stage('Deploy'){
-            
-        // }
+        stage('Deploy'){
+            steps{
+                sh 'bash deploy_stack.sh'
+            }
+        }
     }
 }
