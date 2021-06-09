@@ -39,7 +39,7 @@ NLTeams=['Atlanta Braves',
 
 @app.route('/draft pick', methods=['GET','POST'])
 def draftpick():
-    data_sent=request.get_json('utf-8')
+    data_sent=request.get_json()
     pick = data_sent['pick']
     if pick%2==0:
         team = random.choice(NLTeams)
