@@ -1,6 +1,7 @@
 pipeline {
     agent any
     environment {
+        DATABASE_URI = credentials('DATABASE_URI')
         DOCKER_USERNAME = credentials('DOCKER_USERNAME')
         DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
         install = false
