@@ -8,4 +8,7 @@
   roles:
   - docker
   - worker
-
+- hosts: load-balancer
+  become: true
+  roles:
+    nginx
