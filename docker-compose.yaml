@@ -1,10 +1,10 @@
 version: "3.8"
 
 services:
-  nginx:
-    image: nginx:latest
-    ports: 
-    - target: 80
+  # nginx:
+  #   image: nginx:latest
+  #   ports: 
+  #   - target: 80
   service-1:
     build: ./service-1
     image: jackparryqa/service-1:latest

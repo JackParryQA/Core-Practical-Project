@@ -3,7 +3,7 @@ pipeline {
     environment {
         DOCKER_USERNAME = credentials('DOCKER_USERNAME')
         DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
-        install = true
+        install = false
     }
     stages {
         stage('Install Requirements'){
@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Build'){
             steps{
-                sh 'docker-compose build'
+                sh 'docker-compose build --parallel'
             }
         }
         stage('Push'){
