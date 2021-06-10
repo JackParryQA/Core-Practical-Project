@@ -8,7 +8,7 @@ all:
         worker-1:
     load-balancer:
       hosts:
-        34.91.116.27
+        10.164.0.2
       
   vars:
     ansible_user: jenkins
