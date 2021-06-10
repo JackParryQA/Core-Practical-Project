@@ -15,7 +15,7 @@ services:
     environment:
       DATABASE_URI: ${DATABASE_URI}
     deploy:
-      replicas: 5
+      replicas: 3
   service-2:
     build: ./service-2
     image: jackparryqa/service-2:latest
@@ -24,7 +24,7 @@ services:
       - target: 5001
         published: 5001
     deploy:
-      replicas: 5
+      replicas: 3
   service-3:
     build: ./service-3
     image: jackparryqa/service-3:latest
@@ -33,7 +33,7 @@ services:
     - target: 5002
       published: 5002
     deploy:
-      replicas: 5
+      replicas: 3
   service-4:
     build: ./service-4
     image: jackparryqa/service-4:latest
@@ -42,5 +42,5 @@ services:
     - target: 5003
       published: 5003
     deploy:
-      replicas: 5
+      replicas: 3
                     
