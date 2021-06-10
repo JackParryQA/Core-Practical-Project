@@ -8,7 +8,7 @@ class TestBase(TestCase):
         return app
 
 picks=list()
-for i in range(31,61):
+for i in range(1,31):
     picks.append(i)
 
 class TestServ2(TestBase):
