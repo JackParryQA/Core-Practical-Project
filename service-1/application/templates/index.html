@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>MLB Draft</title>
+    </head>
+
+    <body>
+        <h1>Welcome to the 2021 MLB Draft</h1>
+        <br><br>
+        <h3>Please click the button below to get a random draft pick</h3>
+        <button onclick="window.location.reload()">
+            New Pick
+        </button>
+        
+        <h3>
+            {{ response }}
+        </h3>
+        <br>
+        <h4>Below are some previous draft picks:</h4>
+        <table>
+            {% for pick in picks %}
+            
+                <tr><td>{{ pick.pick }}</td><td>  {{ pick.team }} </td><td> {{ pick.position }}</td></tr>
+            
+            {% endfor %}
+        </table>
+    </body>
+</html>
