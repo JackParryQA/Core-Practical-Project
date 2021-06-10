@@ -1,10 +1,6 @@
 version: "3.8"
 
 services:
-  # nginx:
-  #   image: nginx:latest
-  #   ports: 
-  #   - target: 80
   service-1:
     build: ./service-1
     image: jackparryqa/service-1:latest
@@ -18,8 +14,8 @@ services:
       - service-4
     environment:
       DATABASE_URI: ${DATABASE_URI}
-    # deploy:
-    #   replicas: 5
+    deploy:
+      replicas: 5
   service-2:
     build: ./service-2
     image: jackparryqa/service-2:latest
@@ -27,8 +23,8 @@ services:
     ports:
       - target: 5001
         published: 5001
-    # deploy:
-    #   replicas: 5
+    deploy:
+      replicas: 5
   service-3:
     build: ./service-3
     image: jackparryqa/service-3:latest
@@ -36,8 +32,8 @@ services:
     ports:
     - target: 5002
       published: 5002
-    # deploy:
-    #   replicas: 5
+    deploy:
+      replicas: 5
   service-4:
     build: ./service-4
     image: jackparryqa/service-4:latest
@@ -45,6 +41,6 @@ services:
     ports:
     - target: 5003
       published: 5003
-    # deploy:
-    #   replicas: 5
+    deploy:
+      replicas: 5
                     
