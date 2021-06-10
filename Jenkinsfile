@@ -23,7 +23,6 @@ pipeline {
         }
         stage('Build'){
             steps{
-                sh 'docker rmi -f $(docker images -a -q)'
                 sh 'docker-compose build --parallel'
             }
         }
