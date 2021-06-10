@@ -45,17 +45,17 @@ NLTeams=['Atlanta Braves',
 class TestServ2(TestBase):
     def test_service2_NL(self):
             
-        response = self.client.get(url_for('draftpick'), json={'position':'SS','pick':2})
+        response = self.client.get(url_for('draftpick'), json={'position':'Short Stop','pick':2})
         self.assertEqual(response.status_code, 200)
         for team in NLTeams:
             r = response.data.decode()
             if r[1] == team:
-                self.assertIn(r, {'response':f'With pick 2 in the 2021 MLB Draft the { team } have selected a SS','team':team} )
+                self.assertIn(r, {'response':f'We are now in the second round\nWith pick 2 in the 2021 MLB Draft the { team } have selected a Short Stop','team':team} )
     
     def test_service2_AL(self):
-        response = self.client.get(url_for('draftpick'), json={'position':'RF','pick':19})
+        response = self.client.get(url_for('draftpick'), json={'position':'Right Field','pick':19})
         self.assertEqual(response.status_code, 200)
         for team in ALTeams:
             r = response.data.decode()
             if r[1] == team:
-                self.assertIn(r, {'response':f'With pick 2 in the 2021 MLB Draft the { team } have selected a SS','team':team} )
+                self.assertIn(r, {'response':f'We are now in the second round \n With pick 19 in the 2021 MLB Draft the { team } have selected a Right Field','team':team} )
