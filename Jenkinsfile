@@ -1,6 +1,7 @@
 pipeline {
     agent any
     environment {
+        DATABASE_URI = credentials('DATABASE_URI')
         DOCKER_USERNAME = credentials('DOCKER_USERNAME')
         DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
         install = false
@@ -35,8 +36,10 @@ pipeline {
                 sh 'cd ansible && ansible-playbook -i inventory.yaml playbook.yaml'
             }
         }
-        // stage('Deploy'){
-            
-        // }
+        stage('Deploy'){
+            steps{
+                sh 'bash jenkins/deploy_stack.sh'
+            }
+        }
     }
 }

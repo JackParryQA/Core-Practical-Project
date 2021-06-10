@@ -8,7 +8,7 @@
   roles:
   - docker
   - worker
-- hosts: 34.90.99.236             #nginx vm instance
+- hosts: 34.91.116.27             #nginx vm instance
   become: true
   roles:
   - nginx
