@@ -59,3 +59,4 @@ class TestServ2(TestBase):
             r = response.data.decode()
             if r[1] == team:
                 self.assertIn(r, {'response':f'We are now in the second round\nWith pick 19 in the 2021 MLB Draft the { team } have selected a Right Field','team':team} )
+
