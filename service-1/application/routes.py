@@ -11,7 +11,7 @@ def index():
     position = requests.get('http://service-2:5001/position').text
     pick = requests.get('http://service-3:5002/pick').json()
 
-    response = requests.post('http://service-4:5003/draft pick',json={'position': position, 'pick': pick})
+    response = requests.post('http://service-4:5003/draft pick',json={'position': position, 'pick': pick['pick']})
     response_json=response.json()
     all_picks = MLBDraft.query.order_by(desc(MLBDraft.id)).limit(5).all()
     new_pick = MLBDraft(team=response_json['team'],position=position,pick=pick)
