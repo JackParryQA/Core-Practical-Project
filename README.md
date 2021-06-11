@@ -49,6 +49,12 @@ Below is a risk management outlining some risks and their severity.
 
 ![Risk Assessment](./images/Risk-management.PNG)
 
+## Test Plan
+
+I created a test plan to ensure all aspects of the application was tested. See below.
+
+![Test Plan](./images/TestPlan.PNG)
+
 # Project Tracking
 
 I created a Trello board to help me track my progress throughout the development. You can view it ve clicking [here](https://trello.com/b/MhQbXRrV/practical-project).
