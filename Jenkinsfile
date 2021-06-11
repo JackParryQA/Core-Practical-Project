@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Build'){
             steps{
-                sh 'docker system prune -f --all'
+                sh 'docker system prune -f --all'       #remove unused images
                 sh 'docker-compose build --parallel'
             }
         }
