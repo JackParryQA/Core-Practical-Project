@@ -23,7 +23,7 @@ The application I am going to make will genrate a random position with service 2
     * [Database](#Database)
     * [Risk Assessment](#Risk-Assessment)
 * [Project Tracking](#Project-Tracking)
-* [Continuous Integration and Development (CI/CD)](#Continuous-Integration-and-Development-(CI/CD))
+* [Continuous Integration and Development (CI/CD)](#Continuous-Integration-and-Development(CI/CD))
 * [Architecture](#Architecture)
     * [Docker-Compose](#Docker-Compose)
     * [Docker Swarm](#Docker-Swarm)
