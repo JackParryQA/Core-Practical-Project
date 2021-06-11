@@ -63,8 +63,31 @@ As shown in above, there are 6 main steps in the pipeline:
 
 ## Architecture
 
+### Docker-Compose
+
 
 
 ## Service Configuration
 
 ![Application Arcitecture](./images/project-arc.png)
+
+## Testing
+
+Pytest was used to test the application for this project. Using unit test mocking to allow us to mock http requests which we wouldn't be able to do using normal unit test methods. The tests are automated using Jenkins which means my test script is run everytime the project is built. Below are the test results for each of my services.
+
+### Service-1:
+
+![Service-1 test coverage](./images/Service-1_test.PNG)
+
+### Service-2
+
+![Service-2 test coverage](./images/Service-2_test.PNG)
+
+### Service-3
+
+![Service-3 test coverage](./images/Service-3_test.PNG)
+
+### Service-4
+
+![Service-4 test coverage](./images/Service-4_test.PNG)
+
