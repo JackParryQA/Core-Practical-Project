@@ -23,7 +23,6 @@ The application I am going to make will genrate a random position with service 2
 # Design
 
 
-
 ## Database
 
 Below is the table in the SQL database for this application.
@@ -61,13 +60,13 @@ As shown in above, there are 6 main steps in the pipeline:
 5. **Configuration Management (Ansible):** The Ansible-Playbook is run, which starts NGINX, configures the Docker Swaem and adds a manager and a worker to the swarm
 6. **Deploy:** The Docker Stack is deployed onto the manager node with the docker-compose.yaml and the enviroment variables are also set on the manager node
 
-## Architecture
+# Architecture
 
 ### Docker-Compose
 
 
 
-## Service Configuration
+# Service Configuration
 
 ![Application Arcitecture](./images/project-arc.png)
 
@@ -91,3 +90,17 @@ Pytest was used to test the application for this project. Using unit test mockin
 
 ![Service-4 test coverage](./images/Service-4_test.PNG)
 
+
+# Front-end Design
+
+![Web Page](./images/index.PNG)
+
+Below is what the user would see when they enter the website. You have abutton to click which simply reloads the page to generate the new objects which are displayed the the line of text below it. Below that is the previous 5 picks that have been generated and stored in the database.
+
+# Future Improvements
+
+* Improve CSS design.
+* Possibly add names of players.
+* Allow user to select which round of the draft they want a pick from. Could also be from anywhere in the draft or multiple rounds.
+* Allow users to create a mock draft of selected rounds.
+* Implement a button that sends post requests instead of a button that simply refreshes the page.
