@@ -23,6 +23,8 @@ pipeline {
         }
         stage('Build'){
             steps{
+                sh 'docker rmi -f $(docker images -qa)'
+                sh 'docker system prune'
                 sh 'docker-compose build --parallel'
             }
         }
