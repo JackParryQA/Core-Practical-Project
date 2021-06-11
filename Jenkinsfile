@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Build'){
             steps{
-                sh 'docker system prune -f -a'
+                sh 'docker system prune -f --all'
                 sh 'docker-compose build --parallel'
             }
         }
