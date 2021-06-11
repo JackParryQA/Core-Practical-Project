@@ -19,6 +19,20 @@ The application I am going to make will genrate a random position with service 2
 
 # Contents
 
+* [Design](#Design)
+    * [Database](#Database)
+    * [Risk Assessment](#Risk-Assessment)
+* [Project Tracking](#Project-Tracking)
+* [Continuous Integration and Development (CI/CD)](Continuous-Integration-and-Development(CI/CD))
+* [Architecture](#Architecture)
+    * [Docker-Compose](#Docker-Compose)
+    * [Docker Swarm](#Docker-Swarm)
+    * [NginX](#NginX)
+    * [Ansible](#Ansible)
+* [Service Configuration](#Service-Configuration)
+* [Testing](#Testing)
+* [Front-end Design](#Front-end-Design)
+* [Future Improvements](#Future-Improvements)
 
 # Design
 
@@ -62,15 +76,49 @@ As shown in above, there are 6 main steps in the pipeline:
 
 # Architecture
 
-### Docker-Compose
+## Docker-Compose
 
+The first framework is used and set up was Docker-Compose. Docker-Compose is a tool for defining and running multi-container docker applications. The docker-compose.yaml file is required for this and is run by using the command docker-compose up -d after all the docker images are built which can be done by running the command docker-compose build --parallel. Docker images are built using a Dockerfile which is located in each service directory.
 
+## Docker Swarm
+
+Docker Swarm is a container orchestration tool. This allows you to manage multiple conatainers deployed across multiple host machines.
+
+This project application is made up of multiple containers and so benefits from the ability to move scale across multiple nodes which is where Docker swarm comes in. It automatically maintains the project with replacing any failed conatianers and manages rolling updates. There are 4 VM instances used for this machine and Docker Swarm uses them to construct one system that users access. The diagram below shows how this is applied.
+
+![Docker Swarm](./images/swarm.png)
+
+## NginX
+
+For this project I used Nginx for load balancing the application and as reverse proxy. Basically when a user connects to the website NginX will divert you to a container with the least load to help with performance. It also adds an aditional layer of security.
+
+## Ansible
+
+Ansible is a software provisioning configuration management and application deployment tool.
+
+So instead of going to each VM and setting up the build environment, such as installing docker or initalising the swarm and adding nodes, we can use an ansible-playbook to autonomously set up the build environement on each machine.
+
+Ansible works by sending the commands in the playbook through SSH. The only thing needed to be configured is the SSH keys for each machine.
 
 # Service Configuration
 
-![Application Arcitecture](./images/project-arc.png)
+Below I have outlined how the 4 services work with each other.
 
-## Testing
+![Service Configuration](./images/project-arc.png)
+
+Service-1 is the front-end i.e. what the user will see. It also stores the data on the database. To get the data http requests are utilised. There is a get request for both service-2 & service-3 and a post request for service-4 posting the data received from service-2 & service-3.
+
+Service-2 picks a random position from a list of position I've created and returns that object to service-1.
+
+Service-3 generates a random number (pick) between 1 & 30 (1st implementation) or 31 & 60 (2nd implementation) and returns it to service-1.
+
+Service-4 receives the data posted and with that data return a random team based on whether the pick is even or odd. 
+* 1st implemetation: If pick is even return random NLteam, odd return random ALTeam.
+* 2nd implemetation: If pick is even return random ALteam, odd return random NLTeam.
+
+Service-4 also returns a string which describes the pick and is output on service-1 web page.
+
+# Testing
 
 Pytest was used to test the application for this project. Using unit test mocking to allow us to mock http requests which we wouldn't be able to do using normal unit test methods. The tests are automated using Jenkins which means my test script is run everytime the project is built. Below are the test results for each of my services.
 
@@ -103,4 +151,4 @@ Below is what the user would see when they enter the website. You have abutton t
 * Possibly add names of players.
 * Allow user to select which round of the draft they want a pick from. Could also be from anywhere in the draft or multiple rounds.
 * Allow users to create a mock draft of selected rounds.
-* Implement a button that sends post requests instead of a button that simply refreshes the page.
+* Implement a button that sends http requests instead of a button that simply refreshes the page.
