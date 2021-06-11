@@ -22,6 +22,7 @@ The application I am going to make will genrate a random position with service 2
 * [Design](#Design)
     * [Database](#Database)
     * [Risk Assessment](#Risk-Assessment)
+    * [Test Plan](#Test-Plan)
 * [Project Tracking](#Project-Tracking)
 * [Continuous Integration and Development (CI/CD)](#Continuous-Integration-and-Development(CI/CD))
 * [Architecture](#Architecture)
