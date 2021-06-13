@@ -148,9 +148,9 @@ Pytest was used to test the application for this project. Using unit test mockin
 
 # Front-end Design
 
-![Web Page](./images/index.PNG)
+Below is what the user would see when they enter the website. You have a button to click which simply reloads the page to generate the new objects which are displayed the the line of text below it. Below that is the previous 5 picks that have been generated and stored in the database.
 
-Below is what the user would see when they enter the website. You have abutton to click which simply reloads the page to generate the new objects which are displayed the the line of text below it. Below that is the previous 5 picks that have been generated and stored in the database.
+![Web Page](./images/index.PNG)
 
 # Future Improvements
 
