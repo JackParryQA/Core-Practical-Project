@@ -46,3 +46,4 @@ def draftpick():
     else:
         team = random.choice(NLTeams)
     return jsonify({'response':f'We are now in the second round\nWith pick { data_sent["pick"] } in the 2021 MLB Draft the { team } have selected a { data_sent["position"] }', 'team':team})
+
